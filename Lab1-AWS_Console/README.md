@@ -33,7 +33,7 @@
 
 ### AWS Regions
 ![AWS Regions 1](screenshots/AWS_Region1.png)
-![AWS Regions 2](screenshots/AWS_Region2.png)
+![AWS Regions 2](screenshots/AWS_Regions2.png)
 
 ### AWS Services
 ![AWS Services 1](screenshots/AWS_Services1.png)
