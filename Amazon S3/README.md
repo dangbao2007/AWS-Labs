@@ -47,7 +47,3 @@ Configure Cross-Region Replication (CRR) to replicate data to another bucket.
 ![Bucket Replication](screenshots/18.Bucket_Replication4.png)
 ![Bucket Replication](screenshots/19.Bucket_Replication5.png)
 ![Bucket Replication](screenshots/20.Bucket_Replication6.png)
-
-## Resources
-- [AWS S3 Documentation](https://docs.aws.amazon.com/s3/)
-- [S3 Pricing](https://aws.amazon.com/s3/pricing/)
