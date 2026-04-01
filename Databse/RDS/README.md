@@ -4,6 +4,7 @@ Hands-on practice with Amazon RDS — creating, securing, backing up, and managi
 
 ## Technologies Used
 - Amazon RDS (MySQL / PostgreSQL)
+- Amazon DynamoDB
 - AWS Security Group
 - RDS Snapshots
 - AWS Console
@@ -55,31 +56,15 @@ Hands-on practice with Amazon RDS — creating, securing, backing up, and managi
 
 ![Take DB Snapshot](screenshots/10.Take_DB_Snapshot.png)
 
-### 4. Connect and Add Data
-- Copy the **Endpoint** from the RDS instance's **Connectivity & security** tab
-- Connect using a MySQL client (e.g., MySQL Workbench, DBeaver, or CLI):
-
-```bash
-mysql -h <your-rds-endpoint> -u admin -p
-```
-
-- Create a table and insert sample data:
-
-```sql
-CREATE DATABASE labdb;
-USE labdb;
-
-CREATE TABLE users (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(100),
-  email VARCHAR(100)
-);
-
-INSERT INTO users (name, email) VALUES ('Alice', 'alice@example.com');
-INSERT INTO users (name, email) VALUES ('Bob', 'bob@example.com');
-
-SELECT * FROM users;
-```
+### 4. Create Items in DynamoDB
+- Go to **DynamoDB** in the AWS Console → click **Tables** → select your table
+- Go to the **Explore table items** tab → click **Create item**
+- Switch to **JSON view** or use the **Form view** to fill in attributes:
+  - Add **Partition key** value (e.g., `id`: `1`)
+  - Click **Add new attribute** to add more fields (e.g., `name`, `email`)
+- Click **Create item** → the item will appear in the table
+- Repeat to add more items as needed
+- Use **Scan** or **Query** to verify the items were created successfully
 
 ![Create Items 1](screenshots/11.Create_Items1.png)
 ![Create Items 2](screenshots/12.Create_Items2.png)
@@ -92,6 +77,8 @@ SELECT * FROM users;
 | Concept | Description |
 |---|---|
 | Amazon RDS | Managed relational database — no need to manage OS or DB engine patches |
+| Amazon DynamoDB | Fully managed NoSQL database — stores data as items with attributes |
+| Partition Key | Unique identifier for each item in a DynamoDB table |
 | Security Group | Controls which IPs/services can connect to the database |
 | DB Snapshot | Manual point-in-time backup of the database |
 | Endpoint | The hostname used to connect to the RDS instance |
