@@ -1,12 +1,29 @@
 # AWS RDS Lab
 
-A step-by-step guide to creating and managing a relational database on Amazon RDS.
+Hands-on practice with Amazon RDS — creating, securing, backing up, and managing a relational database.
 
-## Lab Contents
+## Technologies Used
+- Amazon RDS (MySQL / PostgreSQL)
+- AWS Security Group
+- RDS Snapshots
+- AWS Console
+
+---
+
+## Steps
 
 ### 1. Create RDS Database
-
-Launch an RDS instance from the AWS Console.
+- Go to **RDS** in the AWS Console → click **Create database**
+- **Creation method**: Standard create
+- **Engine**: MySQL (or PostgreSQL)
+- **Template**: Free tier
+- **DB instance identifier**: e.g., `my-rds-lab`
+- **Master username**: `admin`
+- **Master password**: set a strong password and save it
+- **Instance type**: `db.t3.micro` (Free Tier eligible)
+- **Storage**: 20 GiB (default)
+- **Public access**: Yes (for lab purposes — disable in production)
+- Click **Create database** and wait for status to become `Available`
 
 ![Create Database 1](screenshots/01.Create_Database1.png)
 ![Create Database 2](screenshots/02.Create_Database2.png)
@@ -18,27 +35,72 @@ Launch an RDS instance from the AWS Console.
 ![Create Database 8](screenshots/08.Create_Database8.png)
 
 ### 2. Configure Security Group
+- Go to your RDS instance → **Connectivity & security** tab
+- Click on the **VPC security group** link
+- Select the security group → **Inbound rules** → **Edit inbound rules**
+- Add a rule:
+  - Type: `MySQL/Aurora` (port `3306`) or `PostgreSQL` (port `5432`)
+  - Source: `My IP` (or your EC2 instance's Security Group for private access)
+- Click **Save rules**
 
-Set up a Security Group to control inbound access to the RDS instance.
+> **Best practice**: Never open database ports to `0.0.0.0/0`. Restrict to known IPs only.
 
 ![Database Security Group](screenshots/09.Databse_Security_Group9.png)
 
-### 3. Take a Snapshot
-
-Back up the database by creating a DB Snapshot.
+### 3. Take a DB Snapshot
+- Go to your RDS instance → click **Actions** → **Take snapshot**
+- Enter a **Snapshot name** (e.g., `my-rds-lab-snapshot-01`)
+- Click **Take snapshot** — wait for status to become `Available`
+- Snapshots can be used to restore the database to a previous state
 
 ![Take DB Snapshot](screenshots/10.Take_DB_Snapshot.png)
 
-### 4. Add Data
+### 4. Connect and Add Data
+- Copy the **Endpoint** from the RDS instance's **Connectivity & security** tab
+- Connect using a MySQL client (e.g., MySQL Workbench, DBeaver, or CLI):
 
-Connect to the database and insert items.
+```bash
+mysql -h <your-rds-endpoint> -u admin -p
+```
+
+- Create a table and insert sample data:
+
+```sql
+CREATE DATABASE labdb;
+USE labdb;
+
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100),
+  email VARCHAR(100)
+);
+
+INSERT INTO users (name, email) VALUES ('Alice', 'alice@example.com');
+INSERT INTO users (name, email) VALUES ('Bob', 'bob@example.com');
+
+SELECT * FROM users;
+```
 
 ![Create Items 1](screenshots/11.Create_Items1.png)
 ![Create Items 2](screenshots/12.Create_Items2.png)
 ![Create Items 3](screenshots/13.Create_Items3.png)
 
-## AWS Services Used
+---
 
-- **Amazon RDS** – Managed relational database service
-- **Security Group** – Controls inbound/outbound traffic for the RDS instance
+## Key Concepts Learned
 
+| Concept | Description |
+|---|---|
+| Amazon RDS | Managed relational database — no need to manage OS or DB engine patches |
+| Security Group | Controls which IPs/services can connect to the database |
+| DB Snapshot | Manual point-in-time backup of the database |
+| Endpoint | The hostname used to connect to the RDS instance |
+| Free Tier | `db.t3.micro` with 20 GiB storage is free for 12 months |
+
+---
+
+## Resources
+- [Amazon RDS Documentation](https://docs.aws.amazon.com/rds/)
+- [RDS Free Tier](https://aws.amazon.com/rds/free/)
+- [RDS Security Best Practices](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_BestPractices.Security.html)
+- [RDS Snapshots](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CreateSnapshot.html)
