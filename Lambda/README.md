@@ -1,56 +1,56 @@
 # AWS Lambda Function Lab
 
-Hướng dẫn từng bước tạo AWS Lambda Function.
+Step-by-step guide to creating an AWS Lambda Function.
 
-## Các bước thực hiện
+## Steps
 
-### Bước 1 - Truy cập Lambda Console
+### Step 1 - Access Lambda Console
 ![Lambda1](screenshot/Lambda1.png)
-- Đăng nhập AWS Console
-- Tìm kiếm và chọn dịch vụ **Lambda**
+- Log in to AWS Console
+- Search for and select **Lambda** service
 
-### Bước 2 - Tạo Function mới
+### Step 2 - Create a New Function
 ![Lambda2](screenshot/Lambda2.png)
-- Nhấn **Create function**
-- Chọn **Author from scratch**
+- Click **Create function**
+- Select **Author from scratch**
 
-### Bước 3 - Cấu hình Function
+### Step 3 - Configure Function
 ![Lambda3](screenshot/Lambda3.png)
-- Đặt **Function name**
-- Chọn **Runtime** (Python, Node.js, ...)
+- Enter a **Function name**
+- Choose a **Runtime** (Python, Node.js, ...)
 
-### Bước 4 - Cấu hình IAM Role
+### Step 4 - Configure IAM Role
 ![Lambda4](screenshot/Lambda4.png)
-- Tạo hoặc chọn **Execution role**
-- Nhấn **Create function**
+- Create or select an **Execution role**
+- Click **Create function**
 
-### Bước 5 - Viết Code
+### Step 5 - Write Code
 ![Lambda5](screenshot/Lambda5.png)
-- Viết code trong phần **Code source**
-- Nhấn **Deploy** để lưu
+- Write your code in the **Code source** section
+- Click **Deploy** to save
 
-### Bước 6 - Tạo Test Event
+### Step 6 - Create Test Event
 ![Lambda6](screenshot/Lambda6.png)
-- Chọn **Test** → **Create new event**
-- Đặt tên và cấu hình event
+- Go to **Test** → **Create new event**
+- Enter a name and configure the event
 
-### Bước 7 - Chạy Test
+### Step 7 - Run Test
 ![Lambda7](screenshot/Lambda7.png)
-- Nhấn **Test** để chạy function
-- Kiểm tra kết quả trong **Execution results**
+- Click **Test** to run the function
+- Check the result in **Execution results**
 
-### Bước 8 - Xem Logs
+### Step 8 - View Logs
 ![Lambda8](screenshot/Lambda8.png)
-- Xem logs trong **CloudWatch Logs**
+- View logs in **CloudWatch Logs**
 
-### Bước 9 - Cấu hình Trigger
+### Step 9 - Configure Trigger
 ![Lambda9](screenshot/Lambda9.png)
-- Thêm **Trigger** cho function (API Gateway, S3, ...)
+- Add a **Trigger** to the function (API Gateway, S3, ...)
 
-### Bước 10 - Hoàn thành
+### Step 10 - Complete
 ![Lambda10](screenshot/Lambda10.png)
-- Kiểm tra và xác nhận function hoạt động
+- Verify and confirm the function is working
 
-## Tài liệu tham khảo
+## References
 - [AWS Lambda Documentation](https://docs.aws.amazon.com/lambda/)
 - [AWS Lambda Pricing](https://aws.amazon.com/lambda/pricing/)
