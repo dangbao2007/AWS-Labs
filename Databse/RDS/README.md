@@ -3,8 +3,7 @@
 Hands-on practice with Amazon RDS — creating, securing, backing up, and managing a relational database.
 
 ## Technologies Used
-- Amazon RDS (MySQL / PostgreSQL)
-- Amazon DynamoDB
+- Amazon RDS (MySQL)
 - AWS Security Group
 - RDS Snapshots
 - AWS Console
